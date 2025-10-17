@@ -19,9 +19,9 @@ public class NinjaController {
         return "Essa é minha primeira mensagem nessa rota";
     }
 
-    @PostMapping("/adicionar")
-    public String criarNinja() {
-        return "Ninja criado";
+    @PostMapping("/criar")
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninjaModel) {
+        return ninjaService.criarNinja(ninjaModel);
     }
 
     @GetMapping("/listar")
