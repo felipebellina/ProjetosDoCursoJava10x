@@ -23,6 +23,9 @@ public class NinjaModel {
     @Column(unique = true)
     private String email;
 
+    @Column (name = "rank")
+    private String rank;
+
     @Column (name = "idade")
     private int idade;
 
@@ -30,7 +33,52 @@ public class NinjaModel {
     @JoinColumn(name = "missoes_id")
     private MissoesModel missoes;
 
+
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public MissoesModel getMissoes() {
+        return missoes;
+    }
+
+    public void setMissoes(MissoesModel missoes) {
+        this.missoes = missoes;
     }
 }
