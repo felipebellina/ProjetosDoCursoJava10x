@@ -1,2 +1,31 @@
-package dev.java.ecommerce.basketservice.service;public class ProductService {
+package dev.java.ecommerce.basketservice.service;
+
+import dev.java.ecommerce.basketservice.client.PlatziProductResponse;
+import dev.java.ecommerce.basketservice.client.PlatziStoreClient;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class ProductService {
+
+    private final PlatziStoreClient platziStoreClient;
+
+    @Cacheable(value = "products")
+    public List<PlatziProductResponse> getAllProducts() {
+        log.info("Getting all products");
+        return platziStoreClient.getAllProducts();
+    }
+
+    @Cacheable(value = "product", key = "#productId")
+    public PlatziProductResponse getProductById(Long productId) {
+        log.info("Getting products with id: {}", productId);
+        return platziStoreClient.getProductById(productId);
+    }
+
 }
